@@ -7,7 +7,7 @@ venv
 testexp
 
 # Session File
-RequestTrackerBot.session
+request-bot.session
 
 # Cache File
 __pycache__
