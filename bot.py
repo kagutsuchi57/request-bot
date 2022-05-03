@@ -56,7 +56,7 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Heya, I am Request Tracker Bot🤖.\n\n How to Use me?</b>\n\t 1. Add me to your Group & CHannel.\n\t 2. Make me admin in both Channel & Group.\n\t 3. Give permission to Post , Edit & Delete Messages.\n\t 4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\n  Bot is ready to be used Bitch.</b>",
+        "<b>Heya, I am Request Tracker Bot🤖.\n\n 🧧How to Use me?</b>\n\t 1. Add me to your Group & CHannel.\n\n 2. Make me admin in both Channel & Group.\n\n 3. Give permission to Post , Edit & Delete Messages.\n\n 4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\n Your setup is completed.</b>",
         parse_mode = "html",
         reply_markup = InlineKeyboardMarkup(
             [
@@ -134,7 +134,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                     botSelfGroup = await bot.get_chat_member(int(groupID), 'me')
                 except (PeerIdInvalid, ValueError):   # If given group id is invalid
                     await msg.reply_text(
-                        "<b>😒Group ID is wrong.</b>",
+                        "<b>Group ID is wrong😒.</b>",
                         parse_mode = "html"
                     )
                 except UserNotParticipant:  # If bot is not in group
@@ -145,7 +145,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                 else:
                     if botSelfGroup.status != "administrator":  # If bot is not admin in group
                         await msg.reply_text(
-                            "<b>🥲Make me admin in Group, Then add use /add.</b>",
+                            "<b>Make me admin in Group🥲, Then add use /add.</b>",
                             parse_mode = "html"
                         )
                     else:   # If bot is admin in group
@@ -158,13 +158,13 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                             )
                         except (ChatIdInvalid, ChannelInvalid): # If given channel id is invalid
                             await msg.reply_text(
-                                "<b>😒Channel ID is wrong.</b>",
+                                "<b>Channel ID is wrong😒.</b>",
                                 parse_mode = "html"
                             )
                         else:
                             if not (botSelfChannel.can_post_messages and botSelfChannel.can_edit_messages and botSelfChannel.can_delete_messages):  # If bot has not enough permissions
                                 await msg.reply_text(
-                                    "<b>🥲Make sure to give Permissions like Post Messages, Edit Messages & Delete Messages.</b>",
+                                    "<b>Make sure to give Permissions like Post Messages, Edit Messages & Delete Messages🥲.</b>",
                                     parse_mode = "html"
                                 )
                             else:   # Adding Group ID, Channel ID & User ID in group
@@ -208,12 +208,12 @@ async def channelgroupRemover(bot:Update, msg:Message):
                     if document[groupID][1] == msg.chat.id: # If group id, channel id is removing by one who added
                         collection_ID.delete_one(document)
                         await msg.reply_text(
-                            "<b>Your Channel ID & Group ID has now been Deleted😢👍 from our Database.\nYou can add them again by using <code>/add GroupID ChannelID</code>.</b>",
+                            "<b>Your Channel ID & Group ID has now been Deleted😢👍 from our Database📀.\nYou can add them again by using <code>/add GroupID ChannelID</code>.</b>",
                             parse_mode = "html"
                         )
                     else:   # If group id, channel id is not removing by one who added
                         await msg.reply_text(
-                            "<b>😒You are not the one who added this Channel ID & Group ID Bitch.</b>",
+                            "<b>You are not the one who added this Channel ID & Group ID 😒.</b>",
                             parse_mode = "html"
                         )
                     break
@@ -289,7 +289,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hey {mentionUser} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n 🔖Your Request Will Be Uploaded Soon, So Have Some Patience Buddy.\n\n 📍 Note that Admins might be busy. So, this may take more time,dont request again again.\n\n See Your Request Status Below </b>"
+            replyText = f"<b>👋 Hey {userid} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n 🔖Your Request Will Be Uploaded Soon, So Have Some Patience Buddy.\n\n 📍 Note that Admins might be busy. So, this may take more time,dont request again again.\n\n See Your Request Status Below. </b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -301,7 +301,7 @@ async def requestHandler(bot:Update, msg:Message):
                         [
                             InlineKeyboardButton(
                                 "📊 See Status 📊",
-                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
+                                url = f"https://t.me/c/{channelIDPro}"
                             )
                         ]
                     ]
@@ -387,7 +387,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
 
                         # Result of request sent to group
-                        replyText = f"<b>Dear {mentionUser}\nYour request for {contentRequested} {groupResult}</b>"
+                        replyText = f"<b>Dear {userid}\nYour request for {contentRequested} {groupResult}, contact to admins for more info.</b>"
                         await bot.send_message(
                             int(groupID),
                             replyText,
