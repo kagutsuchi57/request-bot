@@ -289,7 +289,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hey {userid} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n 🔖Your Request Will Be Uploaded Soon, So Have Some Patience Buddy.\n\n 📍 Note that Admins might be busy. So, this may take more time,dont request again again.\n\n See Your Request Status Below. </b>"
+            replyText = f"<b>👋 Hey {mentionUser} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n 🔖Your Request Will Be Uploaded Soon, So Have Some Patience Buddy.\n\n 📍 Note that Admins might be busy. So, this may take more time,dont request again again.\n\n See Your Request Status Below. </b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -346,7 +346,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                     else:   # If accepting, rejecting request tried to be done by either admin or owner
                         if data == "reject":
                             result = "REJECTED"
-                            groupResult = "has been Rejected❌."
+                            groupResult = "has been Rejected❌, contact to admins for more info."
                             button = InlineKeyboardButton("Request Rejected❌", "rejected")
                         elif data == "done":
                             result = "COMPLETED"
@@ -354,7 +354,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                             button = InlineKeyboardButton("Request Completed✅", "completed")
                         elif data == "unavailable":
                             result = "UNAVAILABLE"
-                            groupResult = "has been rejected❌ due to Unavailablity🥲."
+                            groupResult = "has been rejected❌ due to Unavailablity🥲, ntact to admins for more info."
                             button = InlineKeyboardButton("Request Rejected❌", "rejected")
 
                         msg = callback_query.message
@@ -387,7 +387,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
 
                         # Result of request sent to group
-                        replyText = f"<b>Dear {userid}\nYour request for {contentRequested} {groupResult}, contact to admins for more info.</b>"
+                        replyText = f"<b>Dear {mentionUser}\nYour request for {contentRequested} {groupResult}, contact to admins for more info.</b>"
                         await bot.send_message(
                             int(groupID),
                             replyText,
