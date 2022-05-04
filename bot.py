@@ -56,7 +56,7 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi, I am Request Tracker Bot🤖.\n\n💫 How to Use me🤔?</b>\n\n 1. Add me to your Group & CHannel.\n\n 2. Make me admin in both Channel & Group.\n\n 3. Give permission to Post , Edit & Delete Messages.\n\n 4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\n🀄All Done🗿.</b>",
+        "<b>Hi, I am Request Tracker Bot🤖.\n\n💫 How to Use me🤔?</b>\n\n 1. Add me to your Group & CHannel.\n\n 2. Make me admin in both Channel & Group.\n\n 3. Give permission to Post , Edit & Delete Messages.\n\n 4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\nAll Done🗿.</b>",
         parse_mode = "html",
             [
                 [
