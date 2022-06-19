@@ -58,16 +58,10 @@ async def startHandler(bot:Update, msg:Message):
     await msg.reply_text(
         "<b>Hi, I am Request Tracker Bot🤖.\n\n💫 How to Use me🤔?</b>\n\n 1. Add me to your Group & CHannel.\n\n 2. Make me admin in both Channel & Group.\n\n 3. Give permission to Post , Edit & Delete Messages.\n\n 4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\nAll Done🗿.</b>",
           parse_mode = "html",
-        reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "➕Add me to your Group.",
-                        url = f"https://telegram.me/{botInfo.username}?startgroup=true"
-                    )
-                ]
-            ]
-        )
+     reply_markup=InlineKeyboardMarkup([
+		 [InlineKeyboardButton('⋆ 𝙾𝚠𝚗𝚎𝚛 ⋆', url='https://t.me/cant_think_1')],
+		[InlineKeyboardButton("➕ 𝙰𝚍𝚍 𝙼𝚎 𝚝𝚘 𝚈𝚘𝚞𝚛 𝙶𝚛𝚘𝚞𝚙 ➕", url=f"https://telegram.me/{botInfo.username}?startgroup=true")]
+     ])
     )
     return
 
